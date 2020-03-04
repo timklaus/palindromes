@@ -1,6 +1,6 @@
 // this is our back-end stuff
 var palindromeCheck = function(palindromeArray, palindromeReverse) {
-  if (palindromeArray === palindromeReverse) {
+  if (JSON.stringify(palindromeArray) === JSON.stringify(palindromeReverse)) {
     return true;
   } else {
     return false; 
@@ -15,10 +15,12 @@ $(document).ready(function() {
     var palindromeSentence = $("input#palindromeInput").val()   
     var palindromeArray = palindromeSentence.split("")
     // debugger
-    var palindromeReverse = palindromeArray.reverse()
-    var result = palindromeCheck(palindromeArray)
-    console.log(palindromeArray)
-    console.log(palindromeReverse)
+    var palindromeReverse = palindromeArray.slice().reverse()
+    var result = palindromeCheck(palindromeArray, palindromeReverse)
+    //console.log(palindromeArray === palindromeReverse)
+    //console.log(palindromeReverse)
+    //console.log(JSON.stringify(palindromeArray) === JSON.stringify(palindromeReverse))
+    //console.log(JSON.stringify(palindromeArray))
     console.log(result)
   })
 })
