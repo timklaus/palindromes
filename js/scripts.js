@@ -11,16 +11,15 @@ var palindromeCheck = function(palindromeArray, palindromeReverse) {
 $(document).ready(function() {
   $("form#form").submit(function(event) {
     event.preventDefault()
+    var palindromeSentence = $("input#palindromeInput").val().toUpperCase()
+    // This is where we start trying to get rid of non a-z characters
+    var newPalindromeSentence = palindromeSentence.replace(/[^a-zA-Z ]/g, "").replace(/[" "]/g, "");
     
-    var palindromeSentence = $("input#palindromeInput").val()   
-    var palindromeArray = palindromeSentence.split("")
-    // debugger
+    console.log(newPalindromeSentence)
+
+    var palindromeArray = newPalindromeSentence.split("")
     var palindromeReverse = palindromeArray.slice().reverse()
     var result = palindromeCheck(palindromeArray, palindromeReverse)
-    //console.log(palindromeArray === palindromeReverse)
-    //console.log(palindromeReverse)
-    //console.log(JSON.stringify(palindromeArray) === JSON.stringify(palindromeReverse))
-    //console.log(JSON.stringify(palindromeArray))
     console.log(result)
   })
 })
